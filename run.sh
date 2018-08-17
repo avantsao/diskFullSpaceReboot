@@ -26,3 +26,12 @@ availableSizeRemain=`df -P | awk '/dev$/ {print $4}'`
 echo "availableSizeRemain : $availableSizeRemain"
 
 #echo "count=$cnt"
+
+# while read partition availableSizeCurrent
+# do
+#    cnt=$((availableSizeCurrent*1024/1048576))
+#    dd if=/dev/zero of=/dev/file.txt count=$cnt bs=1048576  
+#    availableSizeRemain=`df -P | awk '{print $4}'`
+#    echo "availableSizeRemain : $partition : $availableSizeRemain"
+# #    echo $partition , $availableSizeCurrent
+# done <<< "`df -P | awk '{print $6, $4}'`"
