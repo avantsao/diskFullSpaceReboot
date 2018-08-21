@@ -1,5 +1,21 @@
 #!/bin/sh
 
+## ----- Initial large file.txt by remove file.txt -----
+while read partition
+do
+    if [ -e "$partition/file.txt" ]
+    then
+        rm -f $partition/file.txt
+        echo "------ Remove $partition/file.txt ------"
+    fi
+done <<< "`df -P | awk '{print $6}'`"
+## echo clear file.txt finish message 
+echo "=============================="
+echo "== clear file.txt finish ====="
+echo "=============================="
+
+## ----------------------------------------------------
+
 # ===============================================================================
 # This command will create a file of size count*bs bytes,
 # ex:
@@ -26,6 +42,9 @@ availableSizeRemain=`df -P | awk '/dev$/ {print $4}'`
 echo "availableSizeRemain : $availableSizeRemain"
 
 #echo "count=$cnt"
+
+
+
 
 # while read partition availableSizeCurrent
 # do
