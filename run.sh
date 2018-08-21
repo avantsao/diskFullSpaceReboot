@@ -41,6 +41,9 @@ dd if=/dev/zero of=/dev/file.txt count=$cnt bs=1048576 #1GB=1073741824 Bytes
 availableSizeRemain=`df -P | awk '/dev$/ {print $4}'` 
 echo "availableSizeRemain : $availableSizeRemain"
 
+# check the capacity %
+capacity=`df -P | awk '/dev$/ {print $5}'`
+
 #echo "count=$cnt"
 
 
@@ -54,3 +57,7 @@ echo "availableSizeRemain : $availableSizeRemain"
 #    echo "availableSizeRemain : $partition : $availableSizeRemain"
 # #    echo $partition , $availableSizeCurrent
 # done <<< "`df -P | awk '{print $6, $4}'`"
+
+
+## ========== While disk is full, trigger reboot function =====
+if [ $availableSizeRemain 
