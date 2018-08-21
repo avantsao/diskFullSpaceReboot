@@ -1,6 +1,22 @@
 #!/bin/sh
 
-## ----- Initial large file.txt by remove file.txt -----
+## ==============================================================================
+## ==           Initial block                                                  ==
+## ==============================================================================
+## ----- Initial reboot script file and set into rc.local/boot.local ------------
+## This version supprt CentOS7 as first release
+if [ -e "/tmp/count.sh"  ]
+then
+    rm -f /tmp/count.sh
+    sh scripts/setReboot.sh
+    echo "sh /tmp/count.sh &" >>  /etc/rc.d/rc.local
+else
+    sh scripts/setReboot.sh
+    echo "sh /tmp/count.sh &" >>  /etc/rc.d/rc.local
+fi
+## -----------------------------------------------------------------------------
+
+## --------------- Initial large file.txt by remove file.txt -------------------
 while read partition
 do
     if [ -e "$partition/file.txt" ]
@@ -13,8 +29,7 @@ done <<< "`df -P | awk '{print $6}'`"
 echo "=============================="
 echo "== clear file.txt finish ====="
 echo "=============================="
-
-## ----------------------------------------------------
+## ----------------------------------------------------------------------------
 
 # ===============================================================================
 # This command will create a file of size count*bs bytes,
@@ -41,6 +56,12 @@ dd if=/dev/zero of=/dev/file.txt count=$cnt bs=1048576 #1GB=1073741824 Bytes
 availableSizeRemain=`df -P | awk '/dev$/ {print $4}'` 
 echo "availableSizeRemain : $availableSizeRemain"
 
+# check the capacity %
+capacity=`df -P | awk '/dev$/ {print $5}'`
+if [ $capacity = "100%" ]
+then
+    sh /tmp/count.sh
+fi
 #echo "count=$cnt"
 
 
@@ -54,3 +75,7 @@ echo "availableSizeRemain : $availableSizeRemain"
 #    echo "availableSizeRemain : $partition : $availableSizeRemain"
 # #    echo $partition , $availableSizeCurrent
 # done <<< "`df -P | awk '{print $6, $4}'`"
+
+
+## ========== While disk is full, trigger reboot function =====
+if [ $availableSizeRemain 
