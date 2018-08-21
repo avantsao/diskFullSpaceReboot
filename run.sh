@@ -3,6 +3,15 @@
 ## ==============================================================================
 ## ==           Initial block                                                  ==
 ## ==============================================================================
+## ----- Add the start / end time and calculate diff time -----------------------
+# start=`date +%s`
+# echo start=$start
+# # function here
+# end=`date +%s`
+# echo end=$end
+# dif=`expr $end - $start`
+# echo $dif
+
 ## ----- Initial reboot script file and set into rc.local/boot.local ------------
 ## This version supprt CentOS7 as first release
 if [ -e "/tmp/count.sh"  ]
@@ -14,9 +23,12 @@ else
     sh scripts/setReboot.sh
     echo "sh /tmp/count.sh &" >>  /etc/rc.d/rc.local
 fi
-## -----------------------------------------------------------------------------
 
 ## --------------- Initial large file.txt by remove file.txt -------------------
+ start=`date +%s`
+ echo start=$start
+# # function here
+
 while read partition
 do
     if [ -e "$partition/file.txt" ]
@@ -25,11 +37,25 @@ do
         echo "------ Remove $partition/file.txt ------"
     fi
 done <<< "`df -P | awk '{print $6}'`"
-## echo clear file.txt finish message 
+
+## -------------- echo clear file.txt finish message ------------- 
 echo "=============================="
 echo "== clear file.txt finish ====="
 echo "=============================="
+<<<<<<< Updated upstream
+end=`date +%s`
+echo end=$end
+dif=`expr $end - $start`
+echo diff=$dif
+
+
 ## ----------------------------------------------------------------------------
+=======
+
+## ==============================================================================
+
+>>>>>>> Stashed changes
+
 
 # ===============================================================================
 # This command will create a file of size count*bs bytes,
