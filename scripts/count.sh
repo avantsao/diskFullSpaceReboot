@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ ! -e "/tmp/clog.log"]
+if [ ! -e "/tmp/clog.log" ]
 then
     echo 1 > /tmp/clog.log
 else
