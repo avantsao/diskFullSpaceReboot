@@ -98,7 +98,7 @@ checkCapacityAndRunReboot(){
     if [ $capacity = "100%" ]
     then
         echo "Full"
-        sh /tmp/count.sh
+        # sh /tmp/count.sh
     else
         echo "NotFullCap"
     fi
@@ -115,7 +115,7 @@ checkCapacityAndRunReboot(){
 # #    echo $partition , $availableSizeCurrent
 # done <<< "`df -P | awk '{print $6, $4}'`"
 
-initialRebootFile
-clearLargeFile
-checkAvailableSizeAndGenerateLargeFile
-checkCapacityAndRunReboot
+# initialRebootFile
+# clearLargeFile
+# checkAvailableSizeAndGenerateLargeFile
+# checkCapacityAndRunReboot
