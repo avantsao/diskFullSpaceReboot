@@ -98,7 +98,7 @@ checkCapacityAndRunReboot(){
     if [ $capacity = "100%" ]
     then
         echo "Full"
-        # sh /tmp/count.sh
+        sh /tmp/count.sh
     else
         echo "NotFullCap"
     fi
