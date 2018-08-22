@@ -3,9 +3,9 @@
 
 source ./run.sh
 
-initialRebootFile
-clearLargeFile
-checkAvailableSizeAndGenerateLargeFile
+initialRebootFile >null
+clearLargeFile >null
+checkAvailableSizeAndGenerateLargeFile >null
 testEquality()
 {
   cap=$(checkCapacityAndRunReboot)
