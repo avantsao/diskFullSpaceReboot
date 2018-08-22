@@ -42,7 +42,6 @@ done <<< "`df -P | awk '{print $6}'`"
 echo "=============================="
 echo "== clear file.txt finish ====="
 echo "=============================="
-<<<<<<< Updated upstream
 end=`date +%s`
 echo end=$end
 dif=`expr $end - $start`
@@ -50,11 +49,9 @@ echo diff=$dif
 
 
 ## ----------------------------------------------------------------------------
-=======
 
 ## ==============================================================================
 
->>>>>>> Stashed changes
 
 
 # ===============================================================================
@@ -77,6 +74,11 @@ echo "availableSize=$availableSizeCurrent"
 # 1MB = 1*1024*1024 = 1048576 bytes 
 cnt=$((availableSizeCurrent*1024/1048576))
 dd if=/dev/zero of=/dev/file.txt count=$cnt bs=1048576 #1GB=1073741824 Bytes
+
+end=`date +%s`
+echo "end generate /dev/file.txt=$end"
+dif=`expr $end - $start`
+echo "diff of file.txt generation=$dif"
 
 # Check the remained disk partition available size after generate the big sized file.  
 availableSizeRemain=`df -P | awk '/dev$/ {print $4}'` 
