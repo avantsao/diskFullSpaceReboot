@@ -90,6 +90,7 @@ checkAvailableSizeRemain(){
     echo "availableSizeRemain : $availableSizeRemain"
 }
 
+# Check the capacity and trigger reboot action
 checkCapacityAndRunReboot(){
     # check the capacity %
     capacity=`df -P | awk '/dev$/ {print $5}'`
