@@ -6,8 +6,7 @@ source ./run.sh
 initialRebootFile >null
 clearLargeFile >null
 checkAvailableSizeAndGenerateLargeFile >null
-testEquality()
-{
+testEquality(){
   cap=$(checkCapacityAndRunReboot)
   assertEquals $cap "Full"
 }
