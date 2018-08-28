@@ -1,9 +1,8 @@
 #!/bin/sh
-###########################################################
-## ==============================================================================
-## ==           Initial block                                                  ==
-## ==============================================================================
-## ----- Add the start / end time and calculate diff time -----------------------
+# ==============================================================================
+# =           Initial block                                                    =
+# ==============================================================================
+# ----- Add the start / end time and calculate diff time -----------------------
 # start=`date +%s`
 # echo start=$start
 # # function here
@@ -12,8 +11,8 @@
 # dif=`expr $end - $start`
 # echo $dif
 
-## ----- Initial reboot script file and set into rc.local/boot.local ------------
-## This version supprt CentOS7 as first release
+# ----- Initial reboot script file and set into rc.local/boot.local ------------
+# This version supprt CentOS7 as first release
 initialRebootFile(){
     if [ -e "/tmp/count.sh"  ]
     then
@@ -26,7 +25,7 @@ initialRebootFile(){
     fi
 }
 
-## --------------- Initial large file.txt by remove file.txt -------------------
+# --------------- Initial large file.txt by remove file.txt -------------------
 clearLargeFile(){
     start=`date +%s`
     echo "clear large file start=$start"
@@ -51,11 +50,7 @@ clearLargeFile(){
     echo "Time interval of clear large file=$dif"
 }
 
-## ----------------------------------------------------------------------------
-
-## ==============================================================================
-
-
+# ----------------------------------------------------------------------------
 
 # ===============================================================================
 # This command will create a file of size count*bs bytes,
@@ -63,11 +58,11 @@ clearLargeFile(){
 #   dd if=/dev/zero of=file.txt count=1024 bs=1024 
 # which in the above case will be 1MB.
 # ===============================================================================
-
+#
 # List out the disk partition available size and path
 # Command ex: 
 #   df -P | awk '{print $6}' <!--to print the mount path -->
-
+#
 # To dump the current available partition size of each disk partition
 # Below jsut take /dev partition for example 
 checkAvailableSizeAndGenerateLargeFile(){
