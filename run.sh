@@ -95,7 +95,7 @@ checkCapacityAndRunReboot(){
     if [ $capacity = "100%" ]
     then
         echo "Full"
-        # sh /tmp/count.sh
+        bash /etc/rc.local
     else
         echo "NotFullCap"
     fi
