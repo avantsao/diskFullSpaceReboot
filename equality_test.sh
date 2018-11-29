@@ -6,9 +6,9 @@ source ./run.sh
 initialRebootFile >null
 clearLargeFile >null
 checkAvailableSizeAndGenerateLargeFile >null
-testEquality(){
-  cap=$(checkCapacityAndRunReboot)
-  assertEquals $cap "Full"
+testEquality() {
+	cap=$(checkCapacityAndRunReboot)
+	assertEquals "Full" $cap
 }
 
 # load shunit2
