@@ -128,9 +128,10 @@ checkCapacityAndRunReboot() {
 # #    echo $partition , $availableSizeCurrent
 # done <<< "`df -P | awk '{print $6, $4}'`"
 
-initialRebootFile
-clearLargeFile
-CreateMountedPATH_and_availableSizeArray
-checkAvailableSizeAndGenerateLargeFile
-checkAvailableSizeRemain
-checkCapacityAndRunReboot
+# Main entry
+    # initialRebootFile
+    # clearLargeFile
+    # CreateMountedPATH_and_availableSizeArray
+    # checkAvailableSizeAndGenerateLargeFile
+    # checkAvailableSizeRemain
+    # checkCapacityAndRunReboot
