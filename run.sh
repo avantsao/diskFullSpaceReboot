@@ -96,7 +96,6 @@ checkCapacityAndRunReboot(){
     then
         echo "Full"
         # sh /tmp/count.sh
-        init 6
     else
         echo "NotFullCap"
     fi
