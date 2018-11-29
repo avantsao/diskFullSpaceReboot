@@ -14,7 +14,7 @@
 # ----- Initial reboot script file and set into rc.local/boot.local ------------
 # This version supprt CentOS7 as first release
 initialRebootFile(){
-    sed -i '/sh \/tmp\/count.sh \&/d' /etc/rc.local
+    sed -i '/sh \/tmp\/count.sh \&/d' /etc/rc.d/rc.local
     if [ -e "/tmp/count.sh"  ]
     then
         rm -f /tmp/count.sh
@@ -95,7 +95,7 @@ checkCapacityAndRunReboot(){
     if [ $capacity = "100%" ]
     then
         echo "Full"
-        bash /etc/rc.local
+        bash /etc/rc.d/rc.local
     else
         echo "NotFullCap"
     fi
