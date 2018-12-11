@@ -108,7 +108,7 @@ checkCapacityAndRunReboot() {
 	# availableSizeRemain_array=($(df -P | awk '/\// {print  $4}'))
 
 	# check the capacity %
-	capacityArray=$(df -P | awk '/\// {gsub("%","",$5);print $5}')
+	capacityArray=($(df -P | awk '/\// {gsub("%","",$5);print $5}'))
 
 	# If capacity is full (100%), trigger the reboot funciton
 	for par in $(seq 0 $(expr ${#capacityArray[@]} - 1)); do
